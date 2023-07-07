@@ -57,3 +57,5 @@ class AppTest {
             .check(matches(isDisplayed()))
     }
 }
+
+annotation class HiltAndroidTest

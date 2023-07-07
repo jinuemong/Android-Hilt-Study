@@ -33,12 +33,19 @@ import javax.inject.Inject
 /**
  * Fragment that displays buttons whose interactions are recorded.
  */
+// LogsFragment에서 의존성 주입을 완료했으므로, 이번에는 ButtonsFragment에 적용한다
+// 둘 모두 같은 액티비티를 기반으로 동작
+
+// 클래스를 Hilt에서 삽입한 필드로 만들기 위해서 @AndroidEntryPoint 주석 추가
+// logger와 navigator 필드의 비공개 수정자(private)를 삭제하고 @Inject 주석을 추가
+// 필드 초기화 코드 (onAttach, populateFields 메서드 ) 삭ㅈ ㅔ
 @AndroidEntryPoint
 class ButtonsFragment : Fragment() {
 
     @InMemoryLogger
-    @Inject lateinit var logger: LoggerDataSource
-    @Inject lateinit var navigator: AppNavigator
+    // 필드 초기화 코드 삭제 후 logger, navigator 주입 추가
+    @Inject lateinit var logger: LoggerDataSource //애플리케이션 컨테이너
+    @Inject lateinit var navigator: AppNavigator // 액티비티 컨테이너 
 
     override fun onCreateView(
         inflater: LayoutInflater,

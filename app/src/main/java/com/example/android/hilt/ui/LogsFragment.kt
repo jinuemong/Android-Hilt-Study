@@ -47,12 +47,15 @@ class LogsFragment : Fragment() {
     @InMemoryLogger
     // @Inject 어노테이션으로 Hilt에서 삽입하려는 다른 유형의 인스턴스를 (LogsFragment) 필드에 삽입
     // ! 필드 삽입
+    // 아래 두가지 방식은 서로 다른 유형의 인스턴스를 제공 -> [결합]
+    // 현재 Hilt에는 2가지 결합 방식이 저장 되어져 있음
+
     @Inject lateinit var logger: LoggerDataSource // LoggerLocalDataSource
     @Inject lateinit var dateFormatter: DateFormatter
 
     private lateinit var recyclerView: RecyclerView
-
-     // 의존성 주입이 없을 경우, 아래처럼 필드 삽입 코드를 직접 작성해야 한다.
+    // 의존성 주입이 없을 경우, 아래처럼 필드 삽입 코드를 직접 작성해야 한다.
+    // [필드 삽입] 기능을 통해서 간단하게 구현
 //    override fun onAttach(context: Context) {
 //        super.onAttach(context)
 //
@@ -61,6 +64,8 @@ class LogsFragment : Fragment() {
 //
 //    private fun populateFields(context: Context) {
 //        logger = (context.applicationContext as LogApplication).serviceLocator.loggerLocalDataSource
+                            // provideDateFormatter 호출로 항상 다른 DateFormatter 인스턴스 반환
+                            // DateFormatter가 다른 클래스에 종속되지 않으므로 가능
 //        dateFormatter =
 //            (context.applicationContext as LogApplication).serviceLocator.provideDateFormatter()
 //    }

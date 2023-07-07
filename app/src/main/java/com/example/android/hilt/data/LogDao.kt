@@ -24,6 +24,10 @@ import androidx.room.Query
 /**
  * Data access object to query the database.
  */
+// LoggerLocalDataSource 인스턴스를 제공하기 위해서
+// Hilt에서 LogDao 인스턴스 제공 방법도 알아야 함
+// 그래나 LogDao는 인터페이스이므로 생성자가 없음. -> @Inject 사용 불가
+// 이러한 유형의 제공 방법 !
 @Dao
 interface LogDao {
 

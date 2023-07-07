@@ -29,9 +29,16 @@ import javax.inject.Inject
  *
  * Container for the Buttons & Logs fragments. This activity simply tracks clicks on buttons.
  */
+// LogsFragment에 인스턴스를 삽입하는 데 필요한 조건을 갖춤
+// 하지만 프래그먼트를 호스팅하는 액티비티를 알아야 하므로,
+// Activity에서도 AndroidEntryPoint 어노테이션 추가
+// 모든 코드를 작성하면 Hilt에 AppNavigator 인스턴스를 삽입할 수 있는 정보가 저장 됨
+// MainActivity에서 아래와 같이 사용 할 수 있음
+// -> 앱을 싫행하면, 의존성 주입이 된 AppNavigator를 사용할 수 있다.
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
-
+    // Hilt에서 가져오는 동작 (private 사용 불가능 !)
+    // onCreate 함수에서 navigator 초기화 코드를 작성할 필요 없음 (삭제 )
     @Inject lateinit var navigator: AppNavigator
 
     override fun onCreate(savedInstanceState: Bundle?) {

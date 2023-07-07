@@ -25,8 +25,17 @@ import javax.inject.Inject
 /**
  * Navigator implementation.
  */
+//AppNavigator 인터페이스를 구현하는 AppNavigatorImpl 클래스
+// AppNavigator는 인터페이스이므로 생성자 삽입을 사용할 수 없다 (@Inject constructor)
+// 따라서 인터페이스에 사용할 구현을 Hilt에 알리려면 Hilt 모듈 내 함수에 @Binds 주석을 사용
+// @Binds 어노테이션은 반드시 추상 클래스에 달아야 한다 -> abstract class NavigationModule
+// AppNavigatorImpl -> AppNavigator 인터페이스를 구현하기 위함
 class AppNavigatorImpl @Inject constructor(private val activity: FragmentActivity) : AppNavigator {
-
+    // @Inject 어노테이션을 통해서 Hilt에 인스턴스 제공 방식을 알려줌
+    // AppNavigatorImpl는 FragmentActivity에 종속 됨
+    // AppNavigator가 Activity 컨테이너에 제공될 때, 사전 정의된 결합으로 FragmentActivity를 사용 가능
+    // 이 인스턴스는 NavigationModule이 ActivityComponent에 설치되어 있으므로,
+    // Fragment 컨테이너와 View 컨테이너에서도 사용할 수 있음
     override fun navigateTo(screen: Screens) {
         val fragment = when (screen) {
             Screens.BUTTONS -> ButtonsFragment()

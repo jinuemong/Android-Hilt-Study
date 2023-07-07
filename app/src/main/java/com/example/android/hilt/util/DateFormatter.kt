@@ -24,6 +24,10 @@ import javax.inject.Inject
 /**
  * String formatter for the log dates.
  */
+
+// 유형의 인스턴스 제공 방법을 Hilt에 알리려면 삽입하려는 클래스의 생성자에 @Inject 주석을 추가
+// @Inject constructor()
+// -> 다른 필드에서 인스턴스화를 통해서 사용 가능
 class DateFormatter @Inject constructor() {
 
     @SuppressLint("SimpleDateFormat")
