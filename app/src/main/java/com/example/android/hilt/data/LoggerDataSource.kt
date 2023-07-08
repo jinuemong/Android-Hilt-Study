@@ -17,6 +17,8 @@
 package com.example.android.hilt.data
 
 // Common interface for Logger data sources.
+// 추상화할 인터페이스
+
 interface LoggerDataSource {
     fun addLog(msg: String)
     fun getAllLogs(callback: (List<Log>) -> Unit)

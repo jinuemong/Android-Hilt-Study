@@ -47,6 +47,10 @@ private const val CODE_LOGS_ITEM = 2
  */
 class LogsContentProvider: ContentProvider() {
 
+    // EntryPoint -> Hilt에서 지원하지 않는 클래스에 종속 항목을 삽입
+    // 종속 항목을 삽입하는 데 Hilt를 사용할 수 없는 코드에서 Hilt가 제공하는 객체를 가져올 수 있는 경계 지점
+    // 이 후에 Application 컨테이너의 인스턴스에서 종속 항목을 가져와야 하므로
+    // 인터페이스를 @EntryPoint로 주석 처리 후 ApplicationComponent 추가
     @InstallIn(SingletonComponent::class)
     @EntryPoint
     interface LogsContentProviderEntryPoint {

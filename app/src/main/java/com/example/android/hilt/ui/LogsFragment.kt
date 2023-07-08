@@ -44,12 +44,13 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LogsFragment : Fragment() {
 
-    @InMemoryLogger
+
     // @Inject 어노테이션으로 Hilt에서 삽입하려는 다른 유형의 인스턴스를 (LogsFragment) 필드에 삽입
     // ! 필드 삽입
     // 아래 두가지 방식은 서로 다른 유형의 인스턴스를 제공 -> [결합]
     // 현재 Hilt에는 2가지 결합 방식이 저장 되어져 있음
-
+    @InMemoryLogger
+    // 위의 어노테이션은 한정자 ( Hilt에 LoggerInMemoryDataSource 인스턴스를 삽입하도록 알림)
     @Inject lateinit var logger: LoggerDataSource // LoggerLocalDataSource
     @Inject lateinit var dateFormatter: DateFormatter
 

@@ -42,6 +42,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ButtonsFragment : Fragment() {
 
+    // 한정자를 통해서 Hilt에 알림
     @InMemoryLogger
     // 필드 초기화 코드 삭제 후 logger, navigator 주입 추가
     @Inject lateinit var logger: LoggerDataSource //애플리케이션 컨테이너

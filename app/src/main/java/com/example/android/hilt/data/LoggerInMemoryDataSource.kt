@@ -19,6 +19,10 @@ package com.example.android.hilt.data
 import java.util.LinkedList
 import javax.inject.Inject
 
+// 메모리 로그를 저장하는 함수
+// LoggerDataSource의 또다른 구현 (기능 분할 )
+// Inject 주석을 통해서 인스턴스 제공 방법을 Hilt에 알림
+
 class LoggerInMemoryDataSource @Inject constructor() : LoggerDataSource {
 
     private val logs = LinkedList<Log>()

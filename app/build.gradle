@@ -71,4 +71,19 @@ dependencies {
     // Hilt testing dependencies
     androidTestImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     kaptAndroidTest "com.google.dagger:hilt-android-compiler:$hilt_version"
+
+    // For Robolectric tests.
+    testImplementation("com.google.dagger:hilt-android-testing:$hilt_version")
+    // ...with Kotlin.
+    kaptTest("com.google.dagger:hilt-android-compiler:$hilt_version")
+    // ...with Java.
+    testAnnotationProcessor("com.google.dagger:hilt-android-compiler:$hilt_version")
+
+    // For instrumented tests.
+    androidTestImplementation("com.google.dagger:hilt-android-testing:$hilt_version")
+    // ...with Kotlin.
+    kaptAndroidTest("com.google.dagger:hilt-android-compiler:$hilt_version")
+    // ...with Java.
+    androidTestAnnotationProcessor("com.google.dagger:hilt-android-compiler:$hilt_version")
 }
+

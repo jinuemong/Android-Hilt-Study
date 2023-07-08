@@ -40,6 +40,7 @@ interface LogDao {
     @Query("DELETE FROM logs")
     fun nukeTable()
 
+    // contentProvider를 위함
     @Query("SELECT * FROM logs ORDER BY id DESC")
     fun selectAllLogsCursor(): Cursor
 
